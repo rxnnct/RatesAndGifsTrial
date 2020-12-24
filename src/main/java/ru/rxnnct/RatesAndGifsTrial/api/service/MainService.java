@@ -24,9 +24,9 @@ public class MainService {
 
     public GifModel getGif(String currency){
         if (checkRates(currency.toUpperCase())){
-            return new GifModel();//dummy
+            return gifClient.getGif("rich");
         } else {
-            return new GifModel();//dummy
+            return gifClient.getGif("broke");
         }
     }
 

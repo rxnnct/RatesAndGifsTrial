@@ -13,11 +13,6 @@ import ru.rxnnct.RatesAndGifsTrial.api.service.MainService;
 public class MainController {
     private final MainService mainService;
 
-//    @GetMapping("{id}")
-//    public ProxyProperty getOne(@PathVariable("id") ProxyProperty proxyProperty) {
-//        return proxyProperty;
-//    }
-
     @Autowired
     public MainController(MainService mainService) {
         this.mainService = mainService;
