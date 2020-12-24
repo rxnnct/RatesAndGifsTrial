@@ -4,22 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.rxnnct.RatesAndGifsTrial.api.client.RatesClient;
-import ru.rxnnct.RatesAndGifsTrial.api.model.RatesModel;
-
-import java.time.LocalDateTime;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import ru.rxnnct.RatesAndGifsTrial.api.model.GifModel;
+import ru.rxnnct.RatesAndGifsTrial.api.service.MainService;
 
 @RestController
 @RequestMapping("/api/get-gif")
 public class MainController {
+    private final MainService mainService;
+
     @Autowired
-    RatesClient ratesClient;
+    public MainController(MainService mainService) {
+        this.mainService = mainService;
+    }
 
     @GetMapping()
-    public RatesModel getRates()
-    {
-        return ratesClient.getYesterdayRates(LocalDateTime.now().minus(Period.ofDays(1)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+    public GifModel getGifByRates() {
+        return mainService.getGif();
     }
 }
