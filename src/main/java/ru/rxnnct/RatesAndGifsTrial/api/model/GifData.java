@@ -3,6 +3,6 @@ package ru.rxnnct.RatesAndGifsTrial.api.model;
 import lombok.Data;
 
 @Data
-public class GifModel {
-    private GifData data;
+public class GifData {
+    private String url;
 }

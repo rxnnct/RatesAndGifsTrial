@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.rxnnct.RatesAndGifsTrial.api.model.GifModel;
+import ru.rxnnct.RatesAndGifsTrial.api.model.GifData;
 import ru.rxnnct.RatesAndGifsTrial.api.service.MainService;
 
 @RestController
@@ -19,7 +19,7 @@ public class MainController {
     }
 
     @GetMapping("{currency}")
-    public GifModel getGifByRates(@PathVariable("currency") String currency) {
-        return mainService.getGif(currency);
+    public GifData getGifByRates(@PathVariable("currency") String currency) {
+        return mainService.getGif(currency).getData();
     }
 }

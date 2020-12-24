@@ -38,7 +38,6 @@ public class MainService {
         RatesModel currentRates = ratesClient.getCurrentRates();
         Float currentCurrencyRate = currentRates.getRates().get(currency);
         Float currentRoubleRate = currentRates.getRates().get("RUB");
-        System.out.println(currency);
 
         return (((currentRoubleRate) / (currentCurrencyRate)) > ((yesterdayRoubleRate) / (yesterdayCurrencyRate)));
     }
