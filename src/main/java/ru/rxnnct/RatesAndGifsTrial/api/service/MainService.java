@@ -22,19 +22,23 @@ public class MainService {
         this.gifClient = gifClient;
     }
 
-    public GifModel getGif(){
-        System.out.println(checkRates());
-        return new GifModel();//dummy
+    public GifModel getGif(String currency){
+        if (checkRates(currency.toUpperCase())){
+            return new GifModel();//dummy
+        } else {
+            return new GifModel();//dummy
+        }
     }
 
-    private boolean checkRates(){
+    private boolean checkRates(String currency){
         RatesModel yesterdayRatesRates = ratesClient.getYesterdayRates(LocalDateTime.now().minus(Period.ofDays(1)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        Float yesterdayCurrencyRate = yesterdayRatesRates.getRates().get("USD");
+        Float yesterdayCurrencyRate = yesterdayRatesRates.getRates().get(currency);
         Float yesterdayRoubleRate = yesterdayRatesRates.getRates().get("RUB");
 
         RatesModel currentRates = ratesClient.getCurrentRates();
-        Float currentCurrencyRate = currentRates.getRates().get("USD");
+        Float currentCurrencyRate = currentRates.getRates().get(currency);
         Float currentRoubleRate = currentRates.getRates().get("RUB");
+        System.out.println(currency);
 
         return (((currentRoubleRate) / (currentCurrencyRate)) > ((yesterdayRoubleRate) / (yesterdayCurrencyRate)));
     }
