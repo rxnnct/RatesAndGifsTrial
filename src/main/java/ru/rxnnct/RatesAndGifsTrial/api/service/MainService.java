@@ -1,6 +1,7 @@
 package ru.rxnnct.RatesAndGifsTrial.api.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.rxnnct.RatesAndGifsTrial.api.client.GifClient;
 import ru.rxnnct.RatesAndGifsTrial.api.client.RatesClient;
@@ -13,8 +14,17 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class MainService {
-        private final RatesClient ratesClient;
-        private final GifClient gifClient;
+    @Value("${baseCurrency}")
+    private String baseCurrency;
+    @Value("${currencyRiseTag}")
+    private String currencyRiseTag;
+    @Value("${currencyFallTag}")
+    private String currencyFallTag;
+    @Value("${dateFormat}")
+    private String dateFormat;
+
+    private final RatesClient ratesClient;
+    private final GifClient gifClient;
 
     @Autowired
     public MainService(RatesClient ratesClient, GifClient gifClient) {
@@ -24,21 +34,21 @@ public class MainService {
 
     public GifModel getGif(String currency){
         if (checkRates(currency.toUpperCase())){
-            return gifClient.getGif("rich");
+            return gifClient.getGif(currencyRiseTag);
         } else {
-            return gifClient.getGif("broke");
+            return gifClient.getGif(currencyFallTag);
         }
     }
 
     private boolean checkRates(String currency){
-        RatesModel yesterdayRatesRates = ratesClient.getYesterdayRates(LocalDateTime.now().minus(Period.ofDays(1)).format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
-        Float yesterdayCurrencyRate = yesterdayRatesRates.getRates().get(currency);
-        Float yesterdayRoubleRate = yesterdayRatesRates.getRates().get("RUB");
+        RatesModel yesterdayRates = ratesClient.getYesterdayRates(LocalDateTime.now().minus(Period.ofDays(1)).format(DateTimeFormatter.ofPattern(dateFormat)));
+        Float yesterdayCurrencyRate = yesterdayRates.getRates().get(currency);
+        Float yesterdayBaseCurrencyRate = yesterdayRates.getRates().get(baseCurrency);
 
         RatesModel currentRates = ratesClient.getCurrentRates();
         Float currentCurrencyRate = currentRates.getRates().get(currency);
-        Float currentRoubleRate = currentRates.getRates().get("RUB");
+        Float currentBaseCurrencyRate = currentRates.getRates().get(baseCurrency);
 
-        return (((currentRoubleRate) / (currentCurrencyRate)) > ((yesterdayRoubleRate) / (yesterdayCurrencyRate)));
+        return (((currentBaseCurrencyRate) / (currentCurrencyRate)) > ((yesterdayBaseCurrencyRate) / (yesterdayCurrencyRate)));
     }
 }

@@ -9,8 +9,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableDiscoveryClient
 @SpringBootApplication
 public class RatesAndGifsTrialApplication {
-
-
+	
 	public static void main(String[] args) {
 		SpringApplication.run(RatesAndGifsTrialApplication.class, args);
 	}

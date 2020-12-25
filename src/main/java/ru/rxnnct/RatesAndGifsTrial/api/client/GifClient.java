@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import ru.rxnnct.RatesAndGifsTrial.api.model.GifModel;
 
-@FeignClient(name = "GifClient", url = "https://api.giphy.com/")
+@FeignClient(name = "GifClient", url = "${ru.rxnnct.RatesAndGifsTrial.gifsService}")
 public interface GifClient {
-    @GetMapping(value = "/v1/gifs/random?api_key=60TL69cU9gSJjbcqdngmEo3JpJYPicmm&tag={pathVariable}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "${ru.rxnnct.RatesAndGifsTrial.gifsMethod}", consumes = MediaType.APPLICATION_JSON_VALUE)
     GifModel getGif(@PathVariable("pathVariable") String pathVariable);
 }
