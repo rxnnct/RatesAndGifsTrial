@@ -49,6 +49,7 @@ public class MainService {
         Float currentCurrencyRate = currentRates.getRates().get(currency);
         Float currentBaseCurrencyRate = currentRates.getRates().get(baseCurrency);
 
+        //Returns true if the currency is increased at the user's request
         return (((currentBaseCurrencyRate) / (currentCurrencyRate)) > ((yesterdayBaseCurrencyRate) / (yesterdayCurrencyRate)));
     }
 }
