@@ -20,7 +20,7 @@ An application that checks if the selected currency is growing and, based on the
   ru.rxnnct.RatesAndGifsTrial.yesterdayRatesMethod=/api/historical/{pathVariable}.json?app_id=[YOUR_APP_ID]
   
   ru.rxnnct.RatesAndGifsTrial.gifsMethod=/v1/gifs/random?api_key=[YOUR_API_KEY]&tag={pathVariable}
-* ```gradle clean build<br>```
+* ```gradle clean build```
 * ```gradlew bootRun``` or ```java -jar /build/libs/RatesAndGifsTrial-0.0.1-SNAPSHOT.jar```
 
 ## How to use
