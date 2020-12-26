@@ -6,7 +6,7 @@ plugins {
 
 group = 'ru.rxnnct'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
 
 configurations {
 	compileOnly {
@@ -37,8 +37,4 @@ dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
-}
-
-test {
-	useJUnitPlatform()
 }
