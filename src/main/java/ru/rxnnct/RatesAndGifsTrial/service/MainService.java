@@ -1,12 +1,13 @@
-package ru.rxnnct.RatesAndGifsTrial.api.service;
+package ru.rxnnct.RatesAndGifsTrial.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-import ru.rxnnct.RatesAndGifsTrial.api.client.GifClient;
-import ru.rxnnct.RatesAndGifsTrial.api.client.RatesClient;
-import ru.rxnnct.RatesAndGifsTrial.api.model.GifModel;
-import ru.rxnnct.RatesAndGifsTrial.api.model.RatesModel;
+import ru.rxnnct.RatesAndGifsTrial.client.GifClient;
+import ru.rxnnct.RatesAndGifsTrial.client.RatesClient;
+import ru.rxnnct.RatesAndGifsTrial.model.GifModel;
+import ru.rxnnct.RatesAndGifsTrial.model.RatesModel;
 
 import java.time.LocalDateTime;
 import java.time.Period;
@@ -14,13 +15,13 @@ import java.time.format.DateTimeFormatter;
 
 @Component
 public class MainService {
-    @Value("${baseCurrency}")
+    @Value("${ru.rxnnct.RatesAndGifsTrial.baseCurrency}")
     private String baseCurrency;
-    @Value("${currencyRiseTag}")
+    @Value("${ru.rxnnct.RatesAndGifsTrial.currencyRiseTag}")
     private String currencyRiseTag;
-    @Value("${currencyFallTag}")
+    @Value("${ru.rxnnct.RatesAndGifsTrial.currencyFallTag}")
     private String currencyFallTag;
-    @Value("${dateFormat}")
+    @Value("${ru.rxnnct.RatesAndGifsTrial.dateFormat}")
     private String dateFormat;
 
     private final RatesClient ratesClient;

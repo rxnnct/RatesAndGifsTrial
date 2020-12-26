@@ -1,4 +1,4 @@
-package ru.rxnnct.RatesAndGifsTrial.api.model;
+package ru.rxnnct.RatesAndGifsTrial.model;
 
 import lombok.Data;
 
