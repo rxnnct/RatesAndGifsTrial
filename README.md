@@ -30,3 +30,9 @@ Examples for ```http://localhost:8080``` and ```usd``` currency:<br>
 * Browser address bar: ```http://localhost:8080/api/get-gif/usd```<br>
 * Browser console (js): ```fetch('http://localhost:8080/api/get-gif/usd').then(response => response.json().then(console.log))```<br>
 * cURL: ```curl http://localhost:8080/api/get-gif/usd```<br>
+
+## Implementation details
+* Spring Framework
+* Feign Client
+* Gradle
+* Lombok
