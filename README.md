@@ -2,6 +2,7 @@
 
 ## About
 An application that checks if the selected currency is growing and, based on the result, gives an answer in the form of a thematic GIF. This is a trial task.<br> 
+Demo: https://ratesandgifstrial.herokuapp.com/api/get-gif/usd
 
 ## Installing and running
 * ```git clone https://github.com/rxnnct/RatesAndGifsTrial.git```
